@@ -49,7 +49,7 @@ assert os.path.isfile(SEQUENCE_FILENAME_DAT)
 
 # Test if camera is connected
 try:
-    reader = RawReader("")
+    reader = EventsIterator("", delta_t=1)
     del reader
     USE_CAMERA_TESTS = True
 except OSError:
@@ -151,7 +151,7 @@ class TestPropheseeCamera(unittest.TestCase):
             )
 
 
-class TestPyPropheseeCameraModel_EventsIT(unittest.TestCase):
+class TestPyPropheseeCameraModel_EventsIt(unittest.TestCase):
     def test_init(self):
         """Test that the PyPropheseeCameraEventsIteratorModel ProcessModel is instantiated
         correctly."""
@@ -364,6 +364,7 @@ class TestPyPropheseeCameraModel_EventsIT(unittest.TestCase):
         camera.run(condition=run_condition, run_cfg=run_cfg)
         time.sleep(0.1)
         camera.stop()
+
 
 class TestPyPropheseeCameraModel_RawReader(unittest.TestCase):
     def test_init(self):
@@ -578,4 +579,3 @@ class TestPyPropheseeCameraModel_RawReader(unittest.TestCase):
         camera.run(condition=run_condition, run_cfg=run_cfg)
         time.sleep(0.1)
         camera.stop()
-        
